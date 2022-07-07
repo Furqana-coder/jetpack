@@ -48,4 +48,6 @@ fun CircularProgressbar(
             drawArc(color = color,-90f,360*currentPer.value, useCenter = false, style= Stroke(strokewidth.toPx(),cap= StrokeCap.Round))
         }
     }
+
+    //Output:Its gives circular progress dialog
 }

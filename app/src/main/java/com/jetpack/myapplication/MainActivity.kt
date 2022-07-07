@@ -238,65 +238,6 @@ Style the text in android Studio
 
     }
 
-    @Composable
-    fun ImageCard(
-        painter: ColorPainter,
-        contentDescriptor: String,
-        title: String,
-        modifier: Modifier = Modifier
-    ) {
-        Card(
-            modifier = modifier.fillMaxHeight(),
-            shape = RoundedCornerShape(15.dp),
-            elevation = 5.dp
-        ) {
-
-            Box(modifier = Modifier.height(200.dp))
-            {
-                Image(
-                    painter = painter,
-                    contentDescription = contentDescriptor,
-                    contentScale = ContentScale.Crop
-                )
-                Box(
-                    modifier = Modifier
-                        .fillMaxHeight()
-                        .padding(12.dp), contentAlignment = Alignment.BottomCenter
-                ) {
-                    Text(title, style = TextStyle(color = Color.White, fontSize = 16.sp))
-
-                }
-
-            }
-
-        }
-    }
-
-
-/*
-
-Compose the box with two different colors on click
- */
-
-    @SuppressLint("UnrememberedMutableState")
-    @Composable
-    fun ColorBox(modifier: Modifier = Modifier) {
-        val color = remember {
-            mutableStateOf(Color.Yellow)
-        }
-        Box(modifier = modifier
-            .background(color.value)
-            .clickable {
-                color.value = Color(
-                    Random.nextFloat(),
-                    Random.nextFloat(),
-                    Random.nextFloat()
-                )
-
-            })
-
-    }
-
 
     @Preview(showBackground = true)
     @Composable
@@ -307,45 +248,6 @@ Compose the box with two different colors on click
         }
     }
 
-    @Composable
-    fun alertDialog()
-    {
-        val context= LocalContext.current;
-        val openDialog=remember{
-            mutableStateOf(true)
-        }
-
-        if(openDialog.value)
-        {
-            AlertDialog(
-                onDismissRequest = { openDialog.value=false },
-                title= { Text(text = "here is the text")},
-                text = { Text(text = "Alert Dialog box ")},
-            confirmButton = {
-                TextButton(onClick = {
-                    openDialog.value=false
-                    Toast.makeText(context,"Clicked on Confirm",Toast.LENGTH_SHORT).show()
-                }) {
-                    Text(text = "Confirm", color = Color.Black)
-                }
-            },
-                dismissButton = {
-                    TextButton(onClick = {
-                        openDialog.value=false
-                        Toast.makeText(context,"Clicked on Dismiss",Toast.LENGTH_SHORT).show()
-                    }) {
-                        Text(text = "Dismiss", color = Color.Black)
-                    }
-                })
-        }
-    }
-
-
-    @Composable
-    fun dropDownMenu()
-    {
-
-    }
 
 
 }
